@@ -6,16 +6,23 @@ from datetime import datetime
 import time
 
 
-format = "%Y-%m-%dT%H:%M:%S.%f"
-
 class BaseModel:
     """class BaseModel defines common sttributes for all classes"""
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """initializes object"""
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+        if kwargs:
+            for key in kwargs:
+                if key in ("created_at", "updated_at"):
+                    kwargs[key] = datetime.strptime(
+                        kwargs[key], %Y-%m-%dT%H:%M:%S.%f)
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
+
+            self.created_at = datetime.strptime('2019-08-09 01:01:01', "%Y-%m-%d %H:%M:%S")
+            self.updated_at = datetime.strptime('2019-08-09 01:01:01', "%Y-%m-%d %H:%M:%S")
 
     def __str__(self):
         """prints class name and id"""

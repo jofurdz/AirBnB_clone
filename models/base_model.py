@@ -25,7 +25,8 @@ class BaseModel:
 
     def __str__(self):
         """prints class name and id"""
-        return "[{}] ({}) {}".format(type(self).__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}".format(type(self).__name__,
+            self.id, self.__dict__)
 
     def to_dict(self):
         """returns dictionary containing key values"""
@@ -35,7 +36,6 @@ class BaseModel:
         newDict["updated_at"] = self.updated_at.isoformat()
 
         return newDict
-
 
     def save(self):
         """updates public instance with current datetime"""

@@ -22,7 +22,8 @@ class FileStorage:
     def new(self, obj):
         """ create new dict item"""
 
-        key = obj.__class__.__name__ + "obj.id"
+        key = obj.__class__.__name__ + "." + str(obj.id)
+        self.__objects[key] = obj
 
     def save(self):
         """serializes to JSON file"""
@@ -36,5 +37,11 @@ class FileStorage:
 
     def reload(self):
         """deserializes JSON file"""
-
-        pass
+        try:
+            with open(self.__file_path, 'r') as jsonObj:
+                all_json = json.load(jsonObj)
+                for key in all_json:
+                    self.__objects[key] = getattr(
+                        models, all_json[key]['__class__'])(**all_json[key])
+        except Exception:
+            pass

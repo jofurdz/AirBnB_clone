@@ -26,11 +26,11 @@ class BaseModel:
     def __str__(self):
         """prints class name and id"""
         return "[{}] ({}) {}".format(type(self).__name__,
-            self.id, self.__dict__)
+            self.__class__.__name__, self.id, self.__dict__)
 
     def to_dict(self):
         """returns dictionary containing key values"""
-        newDict = dict(self.__dict__)
+        newDict = self.__dict__.copy()
         newDict["__class__"] = self.__class__.__name__
         newDict["created_at"] = self.created_at.isoformat()
         newDict["updated_at"] = self.updated_at.isoformat()
@@ -40,4 +40,5 @@ class BaseModel:
     def save(self):
         """updates public instance with current datetime"""
         self.updated_at = datetime.now()
+        models.storage.new(self)
         models.storage.save()

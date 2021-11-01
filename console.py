@@ -77,7 +77,7 @@ class HBNBCommand(cmd.Cmd):
                         delete = key
                     if delete is not None:
                         all_objs.pop(delete)
-                        sorage.save()
+                        storage.save()
                     else:
                         print("** no instance found **")
 

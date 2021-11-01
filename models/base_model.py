@@ -7,7 +7,7 @@ import time
 import models
 
 
-class BaseModel:
+class BaseMode:
     """class BaseModel defines common sttributes for all classes"""
 
     def __init__(self, *args, **kwargs):

@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """class BaseModel"""
 
+
 import uuid
 from datetime import datetime
 import time
@@ -14,8 +15,9 @@ class BaseModel:
         """initializes object"""
         if kwargs:
             for key, value in kwargs.items():
-                value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
-            self.__dict__[key] = value
+                if key == "created_at" or key == "updated_at":
+                    value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                self.__dict__[key] = value
 
         else:
             self.id = str(uuid.uuid4())

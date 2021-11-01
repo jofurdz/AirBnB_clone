@@ -41,13 +41,13 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         """prints string representation of an instance"""
-        if not args:
+        if not arg:
             return print("** class name missing **")
         try:
-            getatr(models, args.split(" ")[0])
+            getattr(models, arg.split(" ")[0])
         except Exception:
             return print("** class doesn't exist **")
-        if len(args.split(" ")) < 2:
+        if len(arg.split(" ")) < 2:
             return print("** instance id missing **")
 
     def do_destroy(self, args):

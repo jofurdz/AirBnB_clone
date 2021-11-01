@@ -2,7 +2,7 @@
 """links FileStorage to BaseModel"""
 
 
-from models.engine.file_storage import FileStorage
+from models.engine.file_storage mport FileStorage
 
 storage = FileStorage()
 storage.reload()

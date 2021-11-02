@@ -1,21 +1,21 @@
 #!/usr/bin/python3
-"""Amenity class test"""
+'''Unittests for class Amenity'''
+
+
 import unittest
 from models.amenity import Amenity
 
 
-class TestAmenity(unittest.TestCase):
-    """Testing of the Amenity Class"""
+class testAmenity(unittest.TestCase):
+    '''Amenity class test'''
 
     def setUp(self):
-        '''Turn Amenity into Amenity variable'''
+        '''Setting Amenity variable'''
 
         self.amenity = Amenity()
-        pass
 
-    def tearDown(self):
-        """tear down after methods"""
-        pass
+    def testInit(self):
+        '''testing class'''
 
         self.assertEqual(self.amenity.name, "")
 
@@ -25,5 +25,5 @@ class TestAmenity(unittest.TestCase):
         self.assertFalse(self.amenity is ob)
 
 
-    if __name__ == '__main__':
-        unittest.main()
+if __name__ == '__main__':
+    unittest.main()

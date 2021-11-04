@@ -31,13 +31,29 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, arg):
         """creates a new instance of basemodel"""
-        if arg == "" or None:
-            print("** class name missing **")
-        elif arg != "BaseModel":
+        if not arg:
+            return print("** class name missing **")
+        elif arg not in ["Amenity", "BaseModel", "City", "Place", 
+                         "Review", "State", "User"]:
             print("** class doesn't exist **")
         else:
-            newModel = BaseModel()
-        print(newModel.id)
+            if arg == "Amenity":
+                new_class = Amenity()
+            elif arg == "BaseModel":
+                new_class = BaseModel()
+            elif arg == "City":
+                new_class = City()
+            elif arg == "Place":
+                new_class = Place()
+            elif arg == "Review":
+                new_class = Review()
+            elif arg == "State":
+                new_class = State()
+            elif arg == "User":
+                new_class = User()
+            print(new_class.id)
+            storage.new(new_class)
+            storage.save()
 
     def do_show(self, arg):
         """prints string representation of an instance"""
@@ -53,7 +69,7 @@ class HBNBCommand(cmd.Cmd):
         if class_name is None:
             print("** class name missing **")
         elif class_name not in ["Amenity", "BaseModel", "City",
-                                "Place", "Review", "State", "User"]
+                                "Place", "Review", "State", "User"]:
             print("** class doesn't exist **")
         elif class_id is None:
             print("** instance id missing **")
@@ -120,7 +136,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, args):
         """updates instance based on class name and ID"""
-        
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()

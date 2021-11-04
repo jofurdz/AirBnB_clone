@@ -41,14 +41,33 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         """prints string representation of an instance"""
-        if not arg:
-            return print("** class name missing **")
-        try:
-            getattr(models, arg.split(" ")[0])
-        except Exception:
-            return print("** class doesn't exist **")
-        if len(arg.split(" ")) < 2:
-            return print("** instance id missing **")
+        class_name = None
+        class_id = None
+
+        if arg != "":
+            try:
+                class_name = arg.split(" ")[0]
+                class_id = arg.split(" ")[1]
+            except IndexError:
+                pass
+        if class_name is None:
+            print("** class name missing **")
+        elif class_name not in ["Amenity", "BaseModel", "City",
+                                "Place", "Review", "State", "User"]
+            print("** class doesn't exist **")
+        elif class_id is None:
+            print("** instance id missing **")
+        else:
+            obj_name = class_name + "." + class_id
+            id_check = False
+            all_objs = storage.all()
+            for key in all_objs.keys():
+                if key == obj_name:
+                    obj = all_objs[key]
+                    print(obj)
+                    id_check = True
+            if id_check is not True:
+                print("** no instance found **")
 
     def do_destroy(self, arg):
         """deletes instance based on class name and id"""
@@ -101,7 +120,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, args):
         """updates instance based on class name and ID"""
-
+        
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()

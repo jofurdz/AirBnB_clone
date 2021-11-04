@@ -39,3 +39,5 @@ EOF  help  quit
 $
 All tests should also pass in non-interactive mode: $ echo "python3 -m unittest discover tests" | bash
 
+Any bugs should be reported to Nikki Jo Ford 
+(jofurdz@gmail.com) or kept to yourself !!!

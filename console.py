@@ -136,7 +136,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, args):
         """updates instance based on class name and ID"""
-
+        pass
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()

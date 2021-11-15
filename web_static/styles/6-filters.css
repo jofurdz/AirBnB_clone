@@ -24,5 +24,64 @@
 }
 
 .locations {
-    
+    width: 15%;
+    height: 100%;
+    display: inline-block;
+    border-right: 1px solid #DDDDDD;
+    position: absolute;
+}
+
+.popover {
+    display: none;
+    position: absolute;
+    background-color: #FAFAFA;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+}
+
+.amenities {
+    width: 20%;
+    position: relative;
+    left: 20%;
+    display: inline-block;
+}
+
+.locations:hover .popover {
+    display: block;
+}
+
+.amenities .popover {
+    right: 2px;
+}
+
+.amenities:hover .popover {
+    display: block;
+}
+
+.popover h4 {
+    text-indent: 3px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.filters h3 {
+    font-weight: 600;
+    margin-left: 20%;
+    margin-bottom: 0;
+}
+
+.filters h2 {
+    font-size: 16px;
+    line-height: 3px;
+}
+
+.filters h4 {
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: 3px;
+    margin-left: 20%;
 }
